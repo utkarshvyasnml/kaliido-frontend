@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #fffbfc;
   --foreground: #171717;
 }
 
@@ -24,4 +24,264 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+/* Smooth page enter */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pageEnter {
+  animation: pageEnter 0.8s ease-out both;
+}
+
+/* Card fade up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+/* Hide scrollbar (mobile slider clean look) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pageEnter {
+  animation: pageEnter 0.8s ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+/* Butterfly container */
+.butterfly-wrap {
+  position: absolute;
+  pointer-events: none;
+  perspective: 1000px;
+  overflow: visible; /* 🔥 CUT PROBLEM FIX */
+}
+
+/* Butterfly */
+.butterfly {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Wings */
+.wing {
+  width: 50%;
+}
+
+.wing svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Right wing mirror */
+.wing.right svg {
+  transform: scaleX(-1);
+}
+
+/* Animations */
+@keyframes flap-left {
+  to {
+    transform: rotateY(-55deg);
+  }
+}
+
+@keyframes flap-right {
+  to {
+    transform: rotateY(55deg);
+  }
+}
+
+.wing.left {
+  transform-origin: right center;
+  animation: flap-left 0.45s ease-in-out infinite alternate;
+}
+
+.wing.right {
+  transform-origin: left center;
+  animation: flap-right 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.95); }
+}
+
+@keyframes blink-fast {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.animate-blink {
+  animation: blink 1.4s infinite ease-in-out;
+}
+
+.animate-blink-fast {
+  animation: blink-fast 0.9s infinite ease-in-out;
+}
+/* ===============================
+   FOOTER BUTTERFLY ONLY
+=============================== */
+
+.footer-butterfly {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.butterfly-footer {
+  width: 90px;
+  display: flex;
+  animation: footer-float 6s ease-in-out infinite;
+}
+
+.butterfly-footer .wing {
+  width: 50%;
+}
+
+.butterfly-footer svg {
+  width: 100%;
+  height: auto;
+  fill: #ff2e74; /* 🌸 PINK */
+}
+
+.butterfly-footer .wing.right svg {
+  transform: scaleX(-1);
+}
+
+.butterfly-footer .wing.left {
+  transform-origin: right center;
+  animation: footer-flap-left 0.9s ease-in-out infinite alternate;
+}
+
+.butterfly-footer .wing.right {
+  transform-origin: left center;
+  animation: footer-flap-right 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes footer-flap-left {
+  to {
+    transform: rotateY(-35deg);
+  }
+}
+
+@keyframes footer-flap-right {
+  to {
+    transform: rotateY(35deg);
+  }
+}
+
+@keyframes footer-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+/* ===== DUAL RANGE SLIDER (FIXED) ===== */
+.price-range {
+  position: absolute;
+  left: 0;
+  top: -6px;
+  width: 100%;
+  height: 16px;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+}
+
+.price-range::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ff2e74;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(255, 46, 116, 0.2);
+}
+
+.price-range::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  background: #ff2e74;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.price-range--min {
+  z-index: 3;
+}
+
+.price-range--max {
+  z-index: 4;
 }
